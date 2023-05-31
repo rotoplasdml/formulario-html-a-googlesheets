@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Title -->
+		<title>Formulario</title>
+		<!-- Js -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<!-- FORMULARIO -->
+		<form id="formulario-inicio-newsletter">
+			<!-- fecha -->
+			<input id="fecha" type="hidden" name="fecha">
+			<!-- hora -->
+			<input id="hora" type="hidden" name="hora">
+			<!-- alfanumerico -->
+			<input id="alfanumerico" type="text" name="alfanumerico" placeholder="Alfanumerico">
+			<!-- correo -->
+			<input id="correo" type="email" name="correo" placeholder="Correo electrónico">
+			<!-- enviar -->
+			<button type="submit">Enviar</button>
+		</form>
+		<!-- JS -->
+		<script>
+			jQuery(document).ready(function($){
+				console.log('inicio:rdy')
+				// Registro en Google Sheets y envio de correo
+				// ID de implementación: AKfycbyh0WFtYMjkJa0-p2v_V7WyStNtgkrzLBlEL8a9sX5GjY5nYCnVwjNfwAmrmaz1K9jO
+				const scriptURL = 'https://script.google.com/macros/s/AKfycbyh0WFtYMjkJa0-p2v_V7WyStNtgkrzLBlEL8a9sX5GjY5nYCnVwjNfwAmrmaz1K9jO/exec'
+				const form = document.getElementById('formulario-inicio-newsletter')
+				form.addEventListener('submit', e => {
+					console.log('envio de formulario')
+					e.preventDefault()
+					/* ==============================================================
+					/* FECHA / HORA
+					/* ============================================================== */
+						const t = new Date()
+						const date = ('0' + t.getDate()).slice(-2)
+						const month = ('0' + (t.getMonth() + 1)).slice(-2)
+						const year = t.getFullYear()
+						const hours = ('0' + t.getHours()).slice(-2)
+						const minutes = ('0' + t.getMinutes()).slice(-2)
+						const seconds = ('0' + t.getSeconds()).slice(-2)
+						const fecha = `${date}/${month}/${year}`
+						const hora = `${hours}:${minutes}:${seconds}`
+						document.getElementById('fecha').value = fecha
+						document.getElementById('hora').value = hora
+					/**/
+					/* ==============================================================
+					/* FETCH
+					/* ============================================================== */
+						fetch(
+							scriptURL, {
+								method: 'POST', 
+								body: new FormData(form)
+							}
+						)
+						.then(
+							response => console.log('Success!', response)
+						)
+						.then(function() {
+							form.reset()
+							alert('Registrado')
+						})
+						.catch(error => console.error('Error!', error.message))
+					/**/
+				})
+			})
+		</script>
+	</body>
+</html>

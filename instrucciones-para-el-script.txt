@@ -1,0 +1,29 @@
+Darle nombre al proyecto
+
+Reemplazar el contenido de Código.gs por el del script
+
+Guardar el proyecto
+
+Dar click en ejecutar, al hacer esto devera saltar un aviso, ahí seleccionamos "Revisar permisos"
+Seleccionamos la cuenta (DML en este caso)
+
+Permitir el acceso
+
+Ya una vez de regreo en la ventana de Apps Scripts le damos a "Implementar / Nueva Implementacion" (aparecera una nueva ventana)
+
+En la nueva ventana damos click en el icono de "Engrane" y seleccionamos "Aplicacion web"
+
+En "Descripcion" regularmente le agrego el titulo de la hoja 
+
+En "Ejecutar" lo dejamos como "Yo"
+
+En "Quien tiene acceso" seleccionamos "Cualquier usuario"
+
+Y damos clik en "Implementar"
+
+Saldra una ventana con el ID de implementación y la URL de la aplicacion web, las copiamos ya que la url ira en el JS
+
+ID:
+AKfycbyh0WFtYMjkJa0-p2v_V7WyStNtgkrzLBlEL8a9sX5GjY5nYCnVwjNfwAmrmaz1K9jO
+URL:
+https://script.google.com/macros/s/AKfycbyh0WFtYMjkJa0-p2v_V7WyStNtgkrzLBlEL8a9sX5GjY5nYCnVwjNfwAmrmaz1K9jO/exec
